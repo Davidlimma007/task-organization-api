@@ -21,10 +21,10 @@ public class Roles implements GrantedAuthority {
     private UUID id;
 
     @Column(nullable = false)
-    private String nome;
+    private String name;
 
     @Override
     public @Nullable String getAuthority() {
-        return nome;
+        return name;
     }
 }

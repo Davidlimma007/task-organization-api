@@ -8,34 +8,34 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "comentario")
+@Table(name = "comments")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Comentario {
+public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false)
-    private String comentario;
+    private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autor_id", nullable = false)
-    private Pessoa autor;
+    @JoinColumn(name = "author_id", nullable = false)
+    private Person author;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "projeto_id", nullable = false)
-    private Projeto projeto;
+    @JoinColumn(name = "project_id", nullable = false)
+    private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tarefa_id")
-    private Tarefa tarefa;
+    @JoinColumn(name = "task_id")
+    private Task task;
 
     @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime dataCriado;
+    private LocalDateTime dateCreated;
 }

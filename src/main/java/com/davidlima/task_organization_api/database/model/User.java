@@ -7,18 +7,17 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "users")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Usuario implements UserDetails {
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -28,19 +27,19 @@ public class Usuario implements UserDetails {
     private String email;
 
     @Column(nullable = false)
-    private String senha;
+    private String password;
 
     @Column(nullable = false)
-    private Boolean ativo = true;
+    private Boolean active = true;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "usuario_role",
-            joinColumns = @JoinColumn(name = "usuario_id"),
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Roles> roles;
 
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Pessoa pessoa;
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Person person;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -49,7 +48,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public @Nullable String getPassword() {
-        return senha;
+        return password;
     }
 
     @Override

@@ -8,26 +8,26 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "etiqueta")
+@Table(name = "tags")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Etiqueta {
+public class Tag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false, unique = true)
-    private String nome;
+    private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "autor_id", nullable = false)
-    private Pessoa autor;
+    @JoinColumn(name = "author_id", nullable = false)
+    private Person author;
 
     @CreationTimestamp
     @Column(updatable = false)
-    private LocalDateTime dataCriado;
+    private LocalDateTime dateCreated;
 }
