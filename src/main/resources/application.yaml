@@ -18,8 +18,16 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: 'create-drop'
+      ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+
+jwt:
+  expiration: ${JWT_EXPIRATION:900000}
+  secret: ${JWT_KEY:'d2pjxR1#Va$vFTpHl3Aka=irozzWmOVmiw8PO-6sY!UkLKULEU$am4gYNFZLQSrji8vksaYMPM0!RqrdwAF70$Zpcf=9iljNg44!s!p&Gh4!her6GRY0B5aHAEMJVg$8vVYF7GMmAA2_#pQ7z0j3xASwl#pXFyiqFV45nlcPNdG&RnQ1d5G#KcW!XNm-9er2rc#DuGq00L#DCiWe2wvy8Fw7xpMoSQvd9d=Ay3BnKr0NyFO&bE36cO48WV3gub6J2Ik6l8TtBLSsgA_VjIUPWYAWD64w9m&zPwv5S&kE0hvPKCg0h=!uTgOxexhOEj3uV&5X1_bF-gAzQECqsI&8E#IM'}
 
 springdoc:
   swagger-ui:
