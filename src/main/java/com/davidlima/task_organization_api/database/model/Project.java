@@ -1,6 +1,6 @@
 package com.davidlima.task_organization_api.database.model;
 
-import com.davidlima.task_organization_api.enums.StatusProject;
+import com.davidlima.task_organization_api.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -29,9 +29,6 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> taskEntities;
 
-    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Comment> commentEntities;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "project_tag",
             joinColumns = @JoinColumn(name = "project_id"),
@@ -44,7 +41,7 @@ public class Project {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusProject status;
+    private Status status;
 
     @CreationTimestamp
     @Column(updatable = false)

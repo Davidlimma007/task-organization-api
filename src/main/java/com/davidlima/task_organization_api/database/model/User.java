@@ -1,6 +1,7 @@
 package com.davidlima.task_organization_api.database.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.jspecify.annotations.Nullable;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,6 +25,7 @@ public class User implements UserDetails {
     private UUID id;
 
     @Column(nullable = false, unique = true)
+    @Email(message = "")
     private String email;
 
     @Column(nullable = false)

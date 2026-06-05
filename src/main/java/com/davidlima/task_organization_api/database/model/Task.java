@@ -1,6 +1,6 @@
 package com.davidlima.task_organization_api.database.model;
 
-import com.davidlima.task_organization_api.enums.StatusTask;
+import com.davidlima.task_organization_api.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -41,7 +41,7 @@ public class Task {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatusTask status;
+    private Status status;
 
     @CreationTimestamp
     @Column(updatable = false)
