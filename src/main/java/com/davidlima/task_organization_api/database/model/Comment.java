@@ -29,10 +29,6 @@ public class Comment {
     @JoinColumn(name = "author_id", nullable = false)
     private Person author;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_id", nullable = false)
-    private Task task;
-
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime dateCreated;

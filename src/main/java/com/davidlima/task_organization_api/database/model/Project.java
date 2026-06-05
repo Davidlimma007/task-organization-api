@@ -4,7 +4,6 @@ import com.davidlima.task_organization_api.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
-import org.springframework.scheduling.config.Task;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -24,7 +23,10 @@ public class Project {
     private UUID id;
 
     @Column(nullable = false, length = 100)
-    private String name;
+    private String title;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
 
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Task> taskEntities;
@@ -34,6 +36,9 @@ public class Project {
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tagEntities;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Comment> commentEntities;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "author_id", nullable = false)
@@ -47,7 +52,5 @@ public class Project {
     @Column(updatable = false)
     private LocalDateTime dateCreated;
 
-    @CreationTimestamp
-    @Column(updatable = false)
     private LocalDateTime dateEnd;
 }
