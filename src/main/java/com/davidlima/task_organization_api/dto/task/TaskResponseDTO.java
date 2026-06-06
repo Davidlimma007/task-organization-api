@@ -1,5 +1,7 @@
 package com.davidlima.task_organization_api.dto.task;
 
+import com.davidlima.task_organization_api.enums.Status;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -9,11 +11,12 @@ public record TaskResponseDTO(
         String title,
         String description,
         UUID projectId,
-        List<UUID> commentId,
+        List<UUID> commentsId,
         List<UUID> tagsId,
         UUID authorId,
         String authorName,
-        UUID statusId,
-        LocalDateTime dateCreated
+        Status status,
+        LocalDateTime dateCreated,
+        LocalDateTime dateEnd
 ) {
 }

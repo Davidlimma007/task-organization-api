@@ -8,7 +8,9 @@ import java.util.UUID;
 public record CommentRequestDTO(
         @NotBlank(message = "O comentário deve ser informado.")
         String comment,
-        @NotBlank(message = "O Autor deve ser informado.")
-        UUID authorId
+        @NotNull(message = "O autor deve ser informado.")
+        UUID authorId,
+        UUID taskId,
+        UUID projectId
 ) {
 }
