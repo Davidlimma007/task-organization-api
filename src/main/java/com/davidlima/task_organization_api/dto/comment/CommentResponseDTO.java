@@ -1,11 +1,10 @@
 package com.davidlima.task_organization_api.dto.comment;
-
-import com.davidlima.task_organization_api.database.model.Person;
-import com.davidlima.task_organization_api.database.model.Task;
+import java.util.UUID;
 
 public record CommentResponseDTO(
+        UUID id,
         String comment,
-        Person author,
-        Task task
+        UUID authorId,
+        String authorName
 ) {
 }

@@ -22,6 +22,12 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @Column(nullable = false, length = 100)
+    private String title;
+
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id", nullable = false)
     private Project project;
@@ -47,7 +53,5 @@ public class Task {
     @Column(updatable = false)
     private LocalDateTime dateCreated;
 
-    @CreationTimestamp
-    @Column(updatable = false)
     private LocalDateTime dateEnd;
 }
