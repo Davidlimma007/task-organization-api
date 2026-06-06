@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public record TagRequestDTO(
-        @NotBlank(message = "O noma da Tag deve ser informado.")
+        @NotBlank(message = "O nome da tag deve ser informado.")
         String name,
         @NotNull(message = "O autor deve ser informado.")
         UUID authorId

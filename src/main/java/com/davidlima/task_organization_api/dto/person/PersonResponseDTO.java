@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public record PersonResponseDTO(
         UUID id,
+        UUID userId,
         String name,
         String surname
 ) {

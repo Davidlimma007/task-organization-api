@@ -7,15 +7,15 @@ import java.util.List;
 import java.util.UUID;
 
 public record TaskRequestDTO(
-        @NotBlank(message = "O titulo deve ser informado.")
+        @NotBlank(message = "O título deve ser informado.")
         String title,
-        @NotBlank(message = "O titulo deve ser informado.")
+        @NotBlank(message = "A descrição deve ser informada.")
         String description,
         @NotNull(message = "O projeto deve ser informado.")
-        UUID projetcId,
+        UUID projectId,
         List<UUID> commentsId,
         List<UUID> tagsId,
         @NotNull(message = "O autor deve ser informado.")
-        UUID author
+        UUID authorId
 ) {
 }

@@ -6,7 +6,7 @@ import java.util.UUID;
 public record TagResponseDTO(
         UUID id,
         String name,
-        UUID author,
+        UUID authorId,
         String authorName,
         LocalDateTime dateCreated
 ) {

@@ -6,7 +6,27 @@ import com.davidlima.task_organization_api.dto.user.UserResponseDTO;
 
 public interface IUserMapper {
 
-    User toUser (UserRequestDTO dto);
+    default User toUser(UserRequestDTO dto) {
+        if (dto == null) {
+            return null;
+        }
+        return User.builder()
+                .email(dto.email())
+                .password(dto.password())
+                .active(true)
+                .build();
+    }
 
-    UserResponseDTO toUserResponseDTO(User user);
+    default UserResponseDTO toUserResponseDTO(User user) {
+        if (user == null) {
+            return null;
+        }
+        return new UserResponseDTO(
+                user.getId(),
+                MapperUtils.personId(user.getPerson()),
+                user.getEmail(),
+                user.getActive(),
+                MapperUtils.roleIds(user.getRoles())
+        );
+    }
 }
