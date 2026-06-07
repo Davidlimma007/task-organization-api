@@ -13,8 +13,6 @@ public interface ICommentMapper {
         return Comment.builder()
                 .comment(dto.comment())
                 .author(MapperUtils.personReference(dto.authorId()))
-                .task(MapperUtils.taskReference(dto.taskId()))
-                .project(MapperUtils.projectReference(dto.projectId()))
                 .build();
     }
 
