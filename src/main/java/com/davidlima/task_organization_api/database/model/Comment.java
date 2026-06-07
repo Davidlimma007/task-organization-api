@@ -26,16 +26,16 @@ public class Comment {
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_id")
-    private Task task;
+    @JoinColumn(name = "author_id", nullable = false)
+    private Person author;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project project;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "author_id", nullable = false)
-    private Person author;
+    @JoinColumn(name = "task_id")
+    private Task task;
 
     @CreationTimestamp
     @Column(updatable = false)
