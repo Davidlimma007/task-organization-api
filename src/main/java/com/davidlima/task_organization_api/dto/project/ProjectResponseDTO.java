@@ -16,7 +16,6 @@ public record ProjectResponseDTO(
         UUID authorId,
         String authorName,
         Status status,
-        LocalDateTime dateCreated,
-        LocalDateTime dateEnd
+        LocalDateTime dateCreated
 ) {
 }
